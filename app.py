@@ -1,23 +1,23 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import joblib
+import pickle
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
 # -----------------------
-# Load Data & Model
+# Load Data & Models
 # -----------------------
 @st.cache_data
 def load_data():
-    df = pd.read_csv(r"C:\Users\sanjula\Desktop\train.csv")
- 
-    return df
+  df = pd.read_csv(r"data\train.csv")
+  return df
 
 @st.cache_resource
 def load_model():
-    model = joblib.load(r"C:\Users\sanjula\Downloads\svm_phone_price_model.pkl")  # <-- replace with your model path
+    with open("model.pkl", "rb") as f:
+        model = pickle.load(f)
     return model
 
 df = load_data()
