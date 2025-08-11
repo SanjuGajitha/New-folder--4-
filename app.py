@@ -11,7 +11,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix, classification_rep
 # -----------------------
 @st.cache_data
 def load_data():
-  df = pd.read_csv(r"data\train.csv")
+  df = pd.read_csv("data/train.csv")
   return df
 
 @st.cache_resource
